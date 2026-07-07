@@ -1,5 +1,5 @@
 pipeline{
-    agent ('label')
+    agent: "label"
     stages{
          stage('install nginx'){
             steps{
