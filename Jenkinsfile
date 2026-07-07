@@ -1,6 +1,18 @@
 pipeline{
     agent any
     stages{
+         stage('install nginx'){
+            steps{
+                sh """
+                    echo "install stage"
+                    sudo apt update
+                    sudo apt install nginx -y
+                    sudo systemctl enable nginx
+                    sudo systemctl start nginx
+                    echo "install completed"
+                """
+            }
+        }
         stage('Build'){
             steps{
                 sh """
