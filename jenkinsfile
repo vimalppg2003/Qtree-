@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build'){
+            steps{
+                sh """
+                    echo "running Build stage"
+                """
+            }
+        }
+        stage('Trigger Job') {
+            steps {
+                script {
+                    build job: 'jenkins_file/ mypipeline', wait: true
+                }
+            }
+        }
+    }
+}
